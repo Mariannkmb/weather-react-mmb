@@ -1,5 +1,11 @@
 import React from "react";
+import LoaderSpinner from "./LoaderSpinner";
 
 export default function Weather() {
-  return <h1>Test</h1>;
+  return (
+    <div>
+      {" "}
+      <LoaderSpinner />{" "}
+    </div>
+  );
 }
