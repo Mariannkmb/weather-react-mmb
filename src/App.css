@@ -1,38 +1,148 @@
-.App {
+body {
+  font-family: "Chivo", sans-serif;
+  text-shadow: #48484a36 1px 1px;
+}
+.AppTitle {
+  color: #ffff;
+  text-shadow: 2px 2px 2px #48484a9a;
+  text-align: center;
+  font-size: 30px;
+}
+.weather-forecast-icons {
+  width: 100%;
+}
+.weather-app-wrapper {
+  max-width: 600px;
+  margin: 20px auto;
+}
+.weather-app {
+  border: 1px solid #dadde1;
+  padding: 15px;
+  border-radius: 10px;
+  border-width: 1px;
+  background-image: url("https://www.festivalclaca.cat/imgfv/b/5-57648_png-imges-free-download-clouds-png-hd-download.png");
+  background-size: 600px;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+
+.rowHeader {
+  background-color: rgba(68, 130, 192, 0.274);
+  padding-left: 15px;
+}
+
+.btn-outline-secondary {
+  margin-right: 5px;
+}
+
+#time-data {
+  margin-top: 6px;
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+#city {
+  margin-top: 25px;
+  padding-left: 20px;
+  margin-bottom: 0px;
+}
+
+#col-temp,
+#temperature,
+#metric,
+#city,
+.rowTodayForecast,
+.rowDetailForecast {
+  color: #3382ea;
+}
+#col-temp,
+#temperature,
+#metric {
+  text-align: center;
+  padding-top: 40px;
+}
+
+#weather-icon {
+  display: block;
+  margin: 0 auto;
+}
+
+.change-metric {
+  display: block;
+  line-height: 0px;
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+.mainData {
+  padding-left: 20px;
+  padding-top: 20px;
+  line-height: normal;
+}
+
+.rowTodayForecast {
+  margin-top: 28px;
+  line-height: 20px;
+  font-size: 18px;
+}
+.currentTemperatureLabel,
+.mainData,
+#weather-descrip {
+  display: block;
+  font-size: 16px;
+  color: #48484a;
+}
+#weather-descrip,
+.currentTemperatureLabel {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.min {
+  text-align: right;
+}
+.max {
+  text-align: left;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.row-header-forecast {
+  display: block;
+  margin-top: 28px;
+  padding-left: 35px;
+}
+#forecast-title,
+h2,
+.weather-forecast-temperature {
+  color: #48484a;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+h6 {
+  color: #ec6e4c;
 }
 
-.App-link {
-  color: #61dafb;
+.rowDetailForecast {
+  text-align: center;
+  font-size: 1em;
+  padding: 2%;
+  line-height: 3px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.weather-forecast-temperature,
+.forecast-date {
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
+  white-space: nowrap;
+}
+
+#gitHubUrl {
+  display: block;
+}
+
+.change-metric .active {
+  color: #48484a;
+  cursor: default;
+  display: inline-block;
+}
+.change-metric .active:hover {
+  text-decoration: none;
 }
