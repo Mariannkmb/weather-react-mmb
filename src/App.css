@@ -1,19 +1,8 @@
-body {
-  font-family: "Chivo", sans-serif;
-  text-shadow: #48484a36 1px 1px;
-}
-.AppTitle {
-  color: #ffff;
-  text-shadow: 2px 2px 2px #48484a9a;
-  text-align: center;
-  font-size: 30px;
-}
-.weather-forecast-icons {
-  width: 100%;
-}
 .weather-app-wrapper {
   max-width: 600px;
   margin: 20px auto;
+  font-family: "Chivo", sans-serif;
+  text-shadow: #48484a36 1px 1px;
 }
 .weather-app {
   border: 1px solid #dadde1;
@@ -26,16 +15,19 @@ body {
   background-position: top;
 }
 
+.AppTitle {
+  color: #ffff;
+  text-shadow: 2px 2px 2px #48484a9a;
+  text-align: center;
+  font-size: 30px;
+}
+
 .rowHeader {
   background-color: rgba(68, 130, 192, 0.274);
   padding-left: 15px;
 }
 
-.btn-outline-secondary {
-  margin-right: 5px;
-}
-
-#time-data {
+.SetDate {
   margin-top: 6px;
   margin-left: 10px;
   font-size: 16px;
@@ -45,6 +37,24 @@ body {
   margin-top: 25px;
   padding-left: 20px;
   margin-bottom: 0px;
+}
+
+.mainData {
+  padding-left: 20px;
+  padding-top: 20px;
+  line-height: normal;
+}
+
+.DescriptionIcon {
+  display: block;
+  text-align: center;
+}
+.weather-forecast-icons {
+  width: 100%;
+}
+
+.btn-outline-secondary {
+  margin-right: 5px;
 }
 
 #col-temp,
@@ -74,12 +84,6 @@ body {
   white-space: nowrap;
 }
 
-.mainData {
-  padding-left: 20px;
-  padding-top: 20px;
-  line-height: normal;
-}
-
 .rowTodayForecast {
   margin-top: 28px;
   line-height: 20px;
@@ -92,6 +96,13 @@ body {
   font-size: 16px;
   color: #48484a;
 }
+
+.Loader {
+  display: block;
+  text-align: center;
+  margin-top: 50px;
+}
+
 #weather-descrip,
 .currentTemperatureLabel {
   text-align: center;

@@ -1,23 +1,19 @@
 import React, { useState } from "react";
 import axios from "axios";
+import date from "date-and-time";
+import LoaderSpinner from "./LoaderSpinner";
 
 export default function Weather() {
   let [input, setInput] = useState("");
+  const [submit, setSubmit] = useState(false);
   let [city, setCity] = useState("");
-  //   let [display, setDisplay] = useState(false);
   let [temperature, setTemperature] = useState("");
   const [units, setUnits] = useState("C");
   const [data, setData] = useState({});
   const [currentmin, setCurrentMin] = useState("");
   const [currentmax, setCurrentMax] = useState("");
-
-  let weatherData = {
-    fahrenheit: 64,
-    month: "May",
-    day: "Thursday",
-    hours: "21:39 hrs",
-    dayNumber: 21,
-  };
+  const now = new Date();
+  const pattern = date.compile(" ddd, MMM DD YYYY");
 
   function GetData(response) {
     setData({
@@ -29,10 +25,11 @@ export default function Weather() {
       wind: response.data.wind.speed,
       icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
     });
+    setCity(response.data.name);
     setTemperature(Math.round(response.data.main.temp));
     setCurrentMax(Math.round(response.data.main.temp_max));
     setCurrentMin(Math.round(response.data.main.temp_min));
-    console.log(response.data);
+    setSubmit(false);
   }
 
   function SearchCity(city) {
@@ -42,10 +39,8 @@ export default function Weather() {
 
   function HandleSubmit(event) {
     event.preventDefault();
-    setCity(input);
-    {
-      city === "" ? SearchCity("Lisbon") : SearchCity(city);
-    }
+    SearchCity(input);
+    setSubmit(true);
   }
 
   function HandleCity(event) {
@@ -84,16 +79,84 @@ export default function Weather() {
       <button className="btn btn-outline-secondary my-2 my-sm-0" type="submit">
         Search
       </button>
-      <button className="btn btn-outline-light my-2 my-sm-0" type="submit">
+      <button className="btn btn-outline-light my-2 my-sm-0" type="button">
         Current
       </button>
-      <p>
-        {" "}
-        {weatherData.day} {weatherData.month} {weatherData.dayNumber}
-        {" | "}
-        {weatherData.hours}{" "}
-      </p>
+      <div className="SetDate"> {date.format(now, pattern)} </div>
     </form>
+  );
+
+  let weatherDetails = (
+    <div className="weather-details">
+      <div className="row principal">
+        <div className="col-5">
+          <h2 id="city">{city} </h2>
+          <p className="mainData">
+            {" "}
+            Precipitation: <span id="humidity" /> {data.humidity}%
+            <br /> Wind : <span id="wind" /> {data.wind} km/hr{" "}
+          </p>
+        </div>
+        <div className="col-2" id="col-temp">
+          <h2>
+            {temperature}˚{units}
+          </h2>
+          <h5 className="change-metric">
+            <a href="/" onClick={ShowCelcius}>
+              ˚C
+            </a>
+            |
+            <a href="/" onClick={ShowFarenheint}>
+              ˚F
+            </a>
+          </h5>
+        </div>
+        <div className="col-5 DescriptionIcon">
+          <img src={data.icon} alt="" id="weather-icon" />
+          {data.description}
+        </div>
+      </div>
+
+      <div className="row rowTodayForecast">
+        <div className="col-1" />
+        <div className="col-2 min">
+          <span id="temp-min"> {currentmin}</span>
+          <span> ˚{units} min</span>
+        </div>
+        <div className="col-6">
+          <h3 className="currentTemperatureLabel">
+            <img
+              className="left-arrow"
+              src={
+                "https://d29fhpw069ctt2.cloudfront.net/icon/image/39040/preview.png"
+              }
+              width="12"
+              height="auto"
+              alt="left arrow"
+            />
+            Current Temperature
+            <img
+              src={
+                "https://d29fhpw069ctt2.cloudfront.net/icon/image/39041/preview.png"
+              }
+              width="12"
+              height="auto"
+              alt="right arrow"
+            />
+          </h3>
+        </div>
+        <div className="col-2" id="col-max">
+          <span id="temp-max"> {currentmax} </span>
+          <span>˚{units} max</span>
+        </div>
+        <div className="col-1" />
+      </div>
+      <div className="row row-header-forecast">
+        <h3 id="forecast-title">Forecast</h3>
+        <h6>Next Days</h6>
+      </div>
+      <div className="row rowDetailForecast mh-30" id="forecast" />
+    </div>
   );
 
   return (
@@ -102,75 +165,7 @@ export default function Weather() {
         <h1 className="AppTitle">Weather</h1>
 
         <div className="row rowHeader">{form}</div>
-
-        <div className="row principal">
-          <div className="col-5">
-            <h2 id="city">{city} </h2>
-            <p className="mainData">
-              {" "}
-              Precipitation: <span id="humidity" /> {data.humidity}%
-              <br /> Wind : <span id="wind" /> {data.wind} km/hr{" "}
-            </p>
-          </div>
-          <div className="col-2" id="col-temp">
-            <h2>
-              {temperature}˚{units}
-            </h2>
-            <h5 className="change-metric">
-              <a href="/" onClick={ShowCelcius}>
-                ˚C
-              </a>
-              |
-              <a href="/" onClick={ShowFarenheint}>
-                ˚F
-              </a>
-            </h5>
-          </div>
-          <div className="col-5">
-            <img src={data.icon} alt="" id="weather-icon" />
-            {data.description}
-          </div>
-        </div>
-
-        <div className="row rowTodayForecast">
-          <div className="col-1" />
-          <div className="col-2 min">
-            <span id="temp-min"> {currentmin}</span>
-            <span> ˚{units} min</span>
-          </div>
-          <div className="col-6">
-            <h3 className="currentTemperatureLabel">
-              <img
-                className="left-arrow"
-                src={
-                  "https://d29fhpw069ctt2.cloudfront.net/icon/image/39040/preview.png"
-                }
-                width="12"
-                height="auto"
-                alt="left arrow"
-              />
-              Current Temperature
-              <img
-                src={
-                  "https://d29fhpw069ctt2.cloudfront.net/icon/image/39041/preview.png"
-                }
-                width="12"
-                height="auto"
-                alt="right arrow"
-              />
-            </h3>
-          </div>
-          <div className="col-2" id="col-max">
-            <span id="temp-max"> {currentmax} </span>
-            <span>˚{units} max</span>
-          </div>
-          <div className="col-1" />
-        </div>
-        <div className="row row-header-forecast">
-          <h3 id="forecast-title">Forecast</h3>
-          <h6>Next Days</h6>
-        </div>
-        <div className="row rowDetailForecast mh-30" id="forecast" />
+        <div>{submit ? <LoaderSpinner /> : weatherDetails} </div>
       </div>
       <small id="gitHubUrl">
         <a
