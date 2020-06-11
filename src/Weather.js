@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import date from "date-and-time";
 import LoaderSpinner from "./LoaderSpinner";
+import { usePosition } from "use-position";
 
 export default function Weather() {
   let [input, setInput] = useState("");
@@ -14,6 +15,10 @@ export default function Weather() {
   const [currentmax, setCurrentMax] = useState("");
   const now = new Date();
   const pattern = date.compile(" ddd, MMM DD YYYY");
+  const watch = true;
+  const { latitude, longitude, timestamp, accuracy, error } = usePosition(
+    watch
+  );
 
   function GetData(response) {
     setData({
@@ -35,6 +40,12 @@ export default function Weather() {
   function SearchCity(city) {
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=b5de5ed43000236f70d3412957f9f340`;
     axios.get(apiUrl).then(GetData);
+  }
+
+  function GetCurrentCity() {
+    let apiKey = "b5de5ed43000236f70d3412957f9f340";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric`;
+    axios.get(`${apiUrl}&appid=${apiKey}`).then(GetData);
   }
 
   function HandleSubmit(event) {
@@ -79,7 +90,11 @@ export default function Weather() {
       <button className="btn btn-outline-secondary my-2 my-sm-0" type="submit">
         Search
       </button>
-      <button className="btn btn-outline-light my-2 my-sm-0" type="button">
+      <button
+        className="btn btn-outline-light my-2 my-sm-0"
+        onClick={GetCurrentCity}
+        type="button"
+      >
         Current
       </button>
       <div className="SetDate"> {date.format(now, pattern)} </div>
