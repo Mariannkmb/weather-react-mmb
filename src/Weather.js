@@ -5,10 +5,10 @@ import LoaderSpinner from "./LoaderSpinner";
 import { usePosition } from "use-position";
 
 export default function Weather() {
-  let [input, setInput] = useState("");
+  const [input, setInput] = useState("");
   const [submit, setSubmit] = useState(false);
-  let [city, setCity] = useState("");
-  let [temperature, setTemperature] = useState("");
+  const [city, setCity] = useState("");
+  const [temperature, setTemperature] = useState("");
   const [units, setUnits] = useState("C");
   const [data, setData] = useState({});
   const [currentmin, setCurrentMin] = useState("");
@@ -16,9 +16,7 @@ export default function Weather() {
   const now = new Date();
   const pattern = date.compile(" ddd, MMM DD YYYY");
   const watch = true;
-  const { latitude, longitude, timestamp, accuracy, error } = usePosition(
-    watch
-  );
+  const { latitude, longitude } = usePosition(watch);
 
   function GetData(response) {
     setData({
