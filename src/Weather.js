@@ -182,7 +182,7 @@ export default function Weather() {
       </div>
       <small id="gitHubUrl">
         <a
-          href="https://github.com/Mariannkmb/"
+          href="https://github.com/Mariannkmb/weather-react-mmb"
           target="_blank"
           rel="noopener noreferrer"
         >
