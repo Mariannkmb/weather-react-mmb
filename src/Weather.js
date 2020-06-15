@@ -44,6 +44,7 @@ export default function Weather() {
     let apiKey = "b5de5ed43000236f70d3412957f9f340";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric`;
     axios.get(`${apiUrl}&appid=${apiKey}`).then(GetData);
+    setSubmit(true);
   }
 
   function HandleSubmit(event) {
@@ -95,26 +96,27 @@ export default function Weather() {
       >
         Current
       </button>
-      <div className="SetDate"> {date.format(now, pattern)} </div>
+      <div className="SetDate mt-6"> {date.format(now, pattern)} </div>
     </form>
   );
 
   let weatherDetails = (
-    <div className="weather-details">
+    <div className="Weather">
       <div className="row principal">
         <div className="col-5">
-          <h2 id="city">{city} </h2>
-          <p className="mainData">
-            {" "}
-            Precipitation: <span id="humidity" /> {data.humidity}%
-            <br /> Wind : <span id="wind" /> {data.wind} km/hr{" "}
-          </p>
+          <h2 className="City">{city} </h2>
+          <div className="Main">
+            <ul>
+              <li> Precipitation: {data.humidity}% </li>
+              <li> Wind : {data.wind} km/hr </li>
+            </ul>
+          </div>
         </div>
         <div className="col-2" id="col-temp">
           <h2>
             {temperature}˚{units}
           </h2>
-          <h5 className="change-metric">
+          <h5 className="ChangeMetric">
             <a href="/" onClick={ShowCelcius}>
               ˚C
             </a>
@@ -130,50 +132,50 @@ export default function Weather() {
         </div>
       </div>
 
-      <div className="row rowTodayForecast">
+      <div className="row RowTodayForecast">
         <div className="col-1" />
-        <div className="col-2 min">
-          <span id="temp-min"> {currentmin}</span>
-          <span> ˚{units} min</span>
+        <div className="col-2 Min">
+          {currentmin} ˚{units} min
         </div>
-        <div className="col-6">
-          <h3 className="currentTemperatureLabel">
-            <img
-              className="left-arrow"
-              src={
-                "https://d29fhpw069ctt2.cloudfront.net/icon/image/39040/preview.png"
-              }
-              width="12"
-              height="auto"
-              alt="left arrow"
-            />
-            Current Temperature
-            <img
-              src={
-                "https://d29fhpw069ctt2.cloudfront.net/icon/image/39041/preview.png"
-              }
-              width="12"
-              height="auto"
-              alt="right arrow"
-            />
-          </h3>
+        <div className="col-1">
+          <img
+            src={
+              "https://d29fhpw069ctt2.cloudfront.net/icon/image/39040/preview.png"
+            }
+            width="20"
+            height="auto"
+            alt="left arrow"
+          />
         </div>
-        <div className="col-2" id="col-max">
-          <span id="temp-max"> {currentmax} </span>
-          <span>˚{units} max</span>
+        <div className="col-4">
+          <h3 className="CurrentTemperatureLabel">Current Temperature </h3>
+        </div>
+        <div className="col-1">
+          <img
+            src={
+              "https://d29fhpw069ctt2.cloudfront.net/icon/image/39041/preview.png"
+            }
+            width="20"
+            height="auto"
+            alt="right arrow"
+          />
+        </div>
+        <div className="col-2 Max">
+          {currentmax} ˚{units} max
         </div>
         <div className="col-1" />
       </div>
-      <div className="row row-header-forecast">
-        <h3 id="forecast-title">Forecast</h3>
+
+      <div className="row RowHeaderForecast">
+        <h3 className="ForecastTitle">Forecast</h3>
         <h6>Next Days</h6>
       </div>
-      <div className="row rowDetailForecast mh-30" id="forecast" />
+      <div className="row RowDetailForecast mh-30" />
     </div>
   );
 
   return (
-    <div className="weather-app-wrapper">
+    <div className="WeatherAppWrapper">
       <div className="weather-app" id="weather-background">
         <h1 className="AppTitle">Weather</h1>
 

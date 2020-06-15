@@ -1,4 +1,4 @@
-.weather-app-wrapper {
+.WeatherAppWrapper {
   max-width: 600px;
   margin: 20px auto;
   font-family: "Chivo", sans-serif;
@@ -28,20 +28,18 @@
 }
 
 .SetDate {
-  margin-top: 6px;
   margin-left: 10px;
   font-size: 16px;
 }
 
-#city {
+.City {
   margin-top: 25px;
   padding-left: 20px;
   margin-bottom: 0px;
 }
 
-.mainData {
-  padding-left: 20px;
-  padding-top: 20px;
+.Main li {
+  list-style: none;
   line-height: normal;
 }
 
@@ -60,9 +58,9 @@
 #col-temp,
 #temperature,
 #metric,
-#city,
-.rowTodayForecast,
-.rowDetailForecast {
+.City,
+.RowTodayForecast,
+.RowDetailForecast {
   color: #3382ea;
 }
 #col-temp,
@@ -77,20 +75,20 @@
   margin: 0 auto;
 }
 
-.change-metric {
+.ChangeMetric {
   display: block;
   line-height: 0px;
   font-size: 16px;
   white-space: nowrap;
 }
 
-.rowTodayForecast {
+.RowTodayForecast {
   margin-top: 28px;
   line-height: 20px;
   font-size: 18px;
 }
-.currentTemperatureLabel,
-.mainData,
+.CurrentTemperatureLabel,
+.Main,
 #weather-descrip {
   display: block;
   font-size: 16px;
@@ -104,23 +102,23 @@
 }
 
 #weather-descrip,
-.currentTemperatureLabel {
+.CurrentTemperatureLabel {
   text-align: center;
 }
 
-.min {
+.Min {
   text-align: right;
 }
-.max {
+.Max {
   text-align: left;
 }
 
-.row-header-forecast {
+.RowHeaderForecast {
   display: block;
   margin-top: 28px;
   padding-left: 35px;
 }
-#forecast-title,
+.ForecastTitle,
 h2,
 .weather-forecast-temperature {
   color: #48484a;
@@ -130,7 +128,7 @@ h6 {
   color: #ec6e4c;
 }
 
-.rowDetailForecast {
+.RowDetailForecast {
   text-align: center;
   font-size: 1em;
   padding: 2%;
@@ -149,11 +147,11 @@ h6 {
   display: block;
 }
 
-.change-metric .active {
+.ChangeMetric .active {
   color: #48484a;
   cursor: default;
   display: inline-block;
 }
-.change-metric .active:hover {
+.ChangeMetric .active:hover {
   text-decoration: none;
 }
