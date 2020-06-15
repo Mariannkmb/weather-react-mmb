@@ -33,7 +33,6 @@
 }
 
 .City {
-  margin-top: 25px;
   padding-left: 20px;
   margin-bottom: 0px;
 }
@@ -55,19 +54,15 @@
   margin-right: 5px;
 }
 
-#col-temp,
-#temperature,
-#metric,
 .City,
 .RowTodayForecast,
 .RowDetailForecast {
   color: #3382ea;
 }
-#col-temp,
-#temperature,
-#metric {
-  text-align: center;
-  padding-top: 40px;
+
+.CityDetailsCeld,
+.TempCeld {
+  padding-top: 30px;
 }
 
 #weather-icon {
@@ -88,8 +83,7 @@
   font-size: 18px;
 }
 .CurrentTemperatureLabel,
-.Main,
-#weather-descrip {
+.Main {
   display: block;
   font-size: 16px;
   color: #48484a;
@@ -101,7 +95,6 @@
   margin-top: 50px;
 }
 
-#weather-descrip,
 .CurrentTemperatureLabel {
   text-align: center;
 }
@@ -143,7 +136,7 @@ h6 {
   white-space: nowrap;
 }
 
-#gitHubUrl {
+GitHubUrl {
   display: block;
 }
 

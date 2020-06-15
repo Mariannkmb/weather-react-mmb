@@ -102,8 +102,8 @@ export default function Weather() {
 
   let weatherDetails = (
     <div className="Weather">
-      <div className="row principal">
-        <div className="col-5">
+      <div className="row ">
+        <div className="col-5 CityDetailsCeld">
           <h2 className="City">{city} </h2>
           <div className="Main">
             <ul>
@@ -112,7 +112,7 @@ export default function Weather() {
             </ul>
           </div>
         </div>
-        <div className="col-2" id="col-temp">
+        <div className="col-2 TempCeld">
           <h2>
             {temperature}˚{units}
           </h2>
@@ -182,7 +182,7 @@ export default function Weather() {
         <div className="row rowHeader">{form}</div>
         <div>{submit ? <LoaderSpinner /> : weatherDetails} </div>
       </div>
-      <small id="gitHubUrl">
+      <small className="GitHubUrl">
         <a
           href="https://github.com/Mariannkmb/weather-react-mmb"
           target="_blank"
